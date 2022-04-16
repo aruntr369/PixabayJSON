@@ -4,10 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -38,6 +40,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
         holder.setImageView(item.getImageUrl());
         holder.setmLikes(item.getLikes());
         holder.setmTags(item.getTags());
+        holder.cardView.setAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.rotate_in));
     }
 
     @Override
@@ -49,9 +52,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
         ImageView imageView;
         TextView mLikes, mTags;
         View view;
+        CardView cardView;
         public PostHolder(@NonNull View itemView) {
             super(itemView);
             view = itemView;
+            cardView = itemView.findViewById(R.id.cardView);
         }
 
         public void setImageView(String url){

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
 import android.view.View;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycleview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL));
         btnSearch = findViewById(R.id.btnSearch);
         editText = findViewById(R.id.searchView);
         progressBar = findViewById(R.id.idPB);
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 mText = editText.getText().toString();
                 progressBar.setVisibility(View.VISIBLE);
                 fetchData(mText);
+                recyclerView.setVisibility(View.VISIBLE);
             }
         });
 
